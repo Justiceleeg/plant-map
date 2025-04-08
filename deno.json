@@ -1,0 +1,20 @@
+{
+	"imports": {
+		"@std/dotenv": "jsr:@std/dotenv@^0.225.3"
+	},
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"deno.ns"
+		],
+		"jsx": "react-jsx"
+	},
+	"fmt": {
+		"useTabs": true,
+		"lineWidth": 120,
+		"indentWidth": 2,
+		"singleQuote": true,
+		"proseWrap": "preserve",
+		"semiColons": false
+	}
+}
