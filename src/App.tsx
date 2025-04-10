@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router'
 import { ClerkProvider } from '@clerk/clerk-react'
 import Router from './pages/router.tsx'
 import './App.css'

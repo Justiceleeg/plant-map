@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router'
 import Index from './index.tsx'
 import Dinosaur from './Dinosaur.tsx'
 
