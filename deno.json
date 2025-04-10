@@ -1,5 +1,6 @@
 {
 	"imports": {
+		"@api/": "./api/",
 		"@std/dotenv": "jsr:@std/dotenv@^0.225.3"
 	},
 	"compilerOptions": {

@@ -1,11 +1,5 @@
 import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import dinosaursRoutes from './dinosaurs/index.ts'
+import { dinoRouter } from './dinoRouter.ts'
 
-const app = new Hono()
-
-app.use('*', cors())
-
-app.route('/dinosaurs', dinosaursRoutes)
-
-export default app
+export const routes = new Hono()
+	.route('/dinosaurs', dinoRouter)
