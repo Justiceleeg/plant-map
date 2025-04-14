@@ -1,9 +1,14 @@
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router'
 import { Dino } from '../types.ts'
 
-export default function Dinosaur() {
-	const { selectedDinosaur } = useParams()
+export const Route = createFileRoute('/$dinosaur')({
+	component: Dinosaur,
+})
+
+function Dinosaur() {
+	const { dinosaur: selectedDinosaur } = Route.useParams()
+	console.log(selectedDinosaur)
 	const [dinosaur, setDino] = useState<Dino>({ name: '', description: '' })
 
 	useEffect(() => {

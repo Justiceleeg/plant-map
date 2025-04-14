@@ -1,8 +1,13 @@
+import { createFileRoute, Link } from '@tanstack/react-router'
+
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
 import { Dino } from '../types.ts'
 
-export default function Index() {
+export const Route = createFileRoute('/')({
+	component: Index,
+})
+
+function Index() {
 	const [dinosaurs, setDinosaurs] = useState<Dino[]>([])
 
 	useEffect(() => {
@@ -20,7 +25,8 @@ export default function Index() {
 			{dinosaurs.map((dinosaur: Dino) => {
 				return (
 					<Link
-						to={`/${dinosaur.name.toLowerCase()}`}
+						to='/$dinosaur'
+						params={{ dinosaur: dinosaur.name }}
 						key={dinosaur.name}
 						className='dinosaur block'
 					>
