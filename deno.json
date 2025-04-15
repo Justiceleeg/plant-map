@@ -1,14 +1,36 @@
 {
+	"tasks": {
+		"dev": "deno task dev:api & deno task dev:vite",
+		"dev:api": "deno run --allow-env --allow-read --allow-net api/main.ts",
+		"dev:vite": "deno run -A npm:vite",
+		"build": "deno run -A --node-modules-dir=auto npm:vite build",
+		"serve": "deno task build && deno task dev:api",
+		"lint": "eslint . --ext ts,tsx",
+		"preview": "vite preview"
+	},
 	"imports": {
 		"@api/": "./api/",
-		"@std/dotenv": "jsr:@std/dotenv@^0.225.3"
-	},
-	"compilerOptions": {
-		"lib": [
-			"dom",
-			"deno.ns"
-		],
-		"jsx": "react-jsx"
+		"@clerk/backend": "npm:@clerk/backend@^1.28.0",
+		"@clerk/clerk-react": "npm:@clerk/clerk-react@^5.28.0",
+		"@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.4",
+		"@hono/clerk-auth": "npm:@hono/clerk-auth@^2.0.0",
+		"@hono/zod-validator": "npm:@hono/zod-validator@^0.4.3",
+		"@std/dotenv": "jsr:@std/dotenv@^0.225.3",
+		"@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.4",
+		"@tanstack/react-query": "npm:@tanstack/react-query@^5.74.3",
+		"@tanstack/react-router": "npm:@tanstack/react-router@^1.116.0",
+		"@tanstack/react-router-devtools": "npm:@tanstack/react-router-devtools@^1.116.0",
+		"@tanstack/router-plugin": "npm:@tanstack/router-plugin@^1.116.1",
+		"@types/react": "npm:@types/react@^19.1.2",
+		"@types/react-dom": "npm:@types/react-dom@^19.1.2",
+		"@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.4",
+		"hono": "npm:hono@^4.7.6",
+		"react": "npm:react@^19.1.0",
+		"react-dom": "npm:react-dom@^19.1.0",
+		"tailwindcss": "npm:tailwindcss@^4.1.4",
+		"vite": "npm:vite@^6.2.6",
+		"vite-tsconfig-paths": "npm:vite-tsconfig-paths@^5.1.4",
+		"zod": "npm:zod@^3.24.2"
 	},
 	"fmt": {
 		"useTabs": true,
@@ -17,5 +39,23 @@
 		"singleQuote": true,
 		"proseWrap": "preserve",
 		"semiColons": false
-	}
+	},
+	"lint": {
+		"exclude": [
+			"src/routeTree.gen.ts"
+		]
+	},
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+		"strict": true,
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"dom.asynciterable",
+			"deno.ns",
+			"deno.unstable"
+		]
+	},
+	"nodeModulesDir": "auto"
 }

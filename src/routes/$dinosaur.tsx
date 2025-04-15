@@ -8,7 +8,6 @@ export const Route = createFileRoute('/$dinosaur')({
 
 function Dinosaur() {
 	const { dinosaur: selectedDinosaur } = Route.useParams()
-	console.log(selectedDinosaur)
 	const [dinosaur, setDino] = useState<Dino>({ name: '', description: '' })
 
 	useEffect(() => {
