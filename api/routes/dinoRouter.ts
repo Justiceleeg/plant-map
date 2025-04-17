@@ -2,8 +2,10 @@ import { getAuth } from '@hono/clerk-auth'
 import { Hono } from 'hono'
 import { z } from 'zod'
 // import { zValidator } from '@hono/zod-validator'
+import { getDinosaurs } from '@api/db/queries/index.ts'
 
-import dinosaurs from './data.json' with { type: 'json' }
+import { dinosaurs } from '@api/db/schema/dinosaurs.ts'
+import { getDinosaurByName } from '@api/db/queries/dinosaurs.ts'
 
 const Dino = z.object({
 	name: z.string(),
@@ -18,7 +20,7 @@ export const dinoRouter = new Hono()
 		// 	'query',
 		// 	z.array(Dino),
 		// ),
-		(c) => {
+		async (c) => {
 			const auth = getAuth(c)
 
 			if (!auth?.userId) {
@@ -26,6 +28,7 @@ export const dinoRouter = new Hono()
 			} else {
 				console.log('logged in!')
 			}
+			const dinosaurs = await getDinosaurs()
 			return c.json(dinosaurs)
 		},
 	)
@@ -35,12 +38,12 @@ export const dinoRouter = new Hono()
 		// 	'query',
 		// 	Dino,
 		// ),
-		(c) => {
+		async (c) => {
 			if (!c?.req.param('dinosaur')) {
 				return c.text('No dinosaur name provided.')
 			}
 			const dinoInput = c?.req.param('dinosaur')
-			const dinosaur = dinosaurs.find((item: Dino) => item.name.toLowerCase() === dinoInput.toLowerCase())
+			const dinosaur = await getDinosaurByName(dinoInput)
 
 			return dinosaur ? c.json(dinosaur) : c.text('No dinosaur found')
 		},
