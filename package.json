@@ -1,0 +1,20 @@
+{
+	"name": "plant-map",
+	"type": "module",
+	"private": true,
+	"workspaces": ["apps/*"],
+	"scripts": {
+		"check": "biome check --write .",
+		"dev": "bun run --filter '*' dev",
+		"build": "bun run --filter '*' build",
+		"check-types": "bun run --filter '*' check-types"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"@biomejs/biome": "1.9.4"
+	}
+}
