@@ -1,0 +1,33 @@
+package views
+
+import "plantmap.info/views/deps"
+
+templ Base(title string) {
+	<!DOCTYPE html>
+	<html lang="en" class="">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<meta
+				name="description"
+				content="TODO description here"
+			/>
+			<meta name="google" content="notranslate"/>
+			<link rel="shortcut icon" href="/static/img/templ.png" type="image/png"/>
+			<title>Todo List { title }</title>
+			@deps.Styles()
+			@deps.HTMX()
+			@deps.Hyperscript()
+		</head>
+		<body class="sample-transition" hx-boost="true">
+			<header>
+				// if !isError {
+				// 	@partials.Navbar(username, fromProtected)
+				// }
+			</header>
+			<main>
+				{ children... }
+			</main>
+		</body>
+	</html>
+}

@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@source "../views";
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/GeistMono-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/GeistVariable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+@layer utilities {
+  /* Custom classes for font-weight (using Geist's variable axis) */
+  .geist-font-light {
+    font-family: 'Geist', ui-sans-serif, sans-serif;
+    font-variation-settings: 'wght' 100;
+  }
+
+  .geist-font-normal {
+    font-family: 'Geist', ui-sans-serif, sans-serif;
+    font-variation-settings: 'wght' 400; /* Normal weight */
+  }
+
+  .geist-font-medium {
+    font-family: 'Geist', ui-sans-serif, sans-serif;
+    font-variation-settings: 'wght' 500;
+  }
+
+  .geist-font-bold {
+    font-family: 'Geist', ui-sans-serif, sans-serif;
+    font-variation-settings: 'wght' 700;  /* Bold weight */
+  }
+
+  .geist-font-extrabold {
+    font-family: 'Geist', ui-sans-serif, sans-serif;
+    font-variation-settings: 'wght' 900;  /* Extra-bold weight */
+  }
+}

@@ -1,0 +1,33 @@
+package components
+
+import "plantmap.info/models"
+import "plantmap.info/views/deps"
+
+templ DinosaurList(dinosaurs []models.Dinosaur) {
+	@deps.Styles()
+	<div id="dinosaur-list" class="dinosaur-list">
+		<div class="font-extrabold">Dinos</div>
+		<div _="on click call alert('You clicked me!')">Dinosaurs!!!</div>
+		for _, dinosaur := range dinosaurs {
+			<div class="dinosaur-item">
+				<h2>
+					<a href={ templ.SafeURL("/dinosaur/" + dinosaur.Name) }>
+						{ dinosaur.Name }
+					</a>
+				</h2>
+			</div>
+		}
+	</div>
+}
+
+templ DinosaurDetail(dinosaur models.Dinosaur) {
+	<div class="dinosaur-item-detail">
+		<h2>
+			{ dinosaur.Name }
+		</h2>
+		<p>{ dinosaur.Description }</p>
+		<a href={ templ.SafeURL("/") }>
+			back to list
+		</a>
+	</div>
+}

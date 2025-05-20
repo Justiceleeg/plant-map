@@ -1,0 +1,25 @@
+package deps
+
+var htmxHandle = templ.NewOnceHandle()
+
+templ HTMX() {
+	@htmxHandle.Once() {
+		<script src="/static/js/htmx.min.js"></script>
+	}
+}
+
+var hyperscriptHandle = templ.NewOnceHandle()
+
+templ Hyperscript() {
+	@hyperscriptHandle.Once() {
+		<script src="/static/js/hyperscript.min.js"></script>
+	}
+}
+
+var stylesHandle = templ.NewOnceHandle()
+
+templ Styles() {
+	@stylesHandle.Once() {
+		<link rel="stylesheet" href="/static/css/main.css" type="text/css"/>
+	}
+}
